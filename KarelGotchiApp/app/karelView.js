@@ -1,13 +1,15 @@
-import { Link, router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Link, router, useLocalSearchParams } from "expo-router";
 
 export default function Page() {
+  const params = useLocalSearchParams();
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         <Text style={styles.title}>Karel View</Text>
+        <Text style={styles.subtitle}>Currently viewing {params.name}</Text>
         <Pressable
-          style={styles.subtitle}
+          style={styles.btn}
           onPress={() =>
             router.push({
               pathname: "/",
@@ -40,5 +42,14 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 36,
     color: "#38434D",
+  },
+  btn: {
+    backgroundColor: "#CF9FFF",
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    width: "100%",
   },
 });

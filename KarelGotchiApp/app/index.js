@@ -1,34 +1,17 @@
 import { Link, router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import LoadKarelBtn from "../components/LoadKarelBtn"
+import KarelObj from "../components/kgObjs";
+
+const StarterKarel = KarelObj;
 
 export default function Page() {
-  // would make special button component and map data base to button flat list
+  // would map data base to button flat list
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         <Text style={styles.title}>Home</Text>
-        <Pressable
-          style={styles.subtitle}
-          onPress={() =>
-            router.push({
-              pathname: "/karelView",
-              id: 1
-            })
-          }
-        >
-          <Text style={{ fontSize: 20 }}>Karelgotchi #1</Text>
-        </Pressable>
-        <Pressable
-          style={styles.subtitle}
-          onPress={() =>
-            router.push({
-              pathname: "/karelView",
-              id: 2
-            })
-          }
-        >
-          <Text style={{ fontSize: 20 }}>Karelgotchi #2</Text>
-        </Pressable>
+        <LoadKarelBtn inputObj={StarterKarel}></LoadKarelBtn>
       </View>
     </View>
   );
@@ -49,9 +32,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 64,
     fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
   },
 });
