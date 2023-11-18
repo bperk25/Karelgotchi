@@ -2,32 +2,19 @@ import { Link, router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function Page() {
-  // would make special button component and map data base to button flat list
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Text style={styles.title}>Home</Text>
+        <Text style={styles.title}>Karel View</Text>
         <Pressable
           style={styles.subtitle}
           onPress={() =>
             router.push({
-              pathname: "/karelView",
-              id: 1
+              pathname: "/",
             })
           }
         >
-          <Text style={{ fontSize: 20 }}>Karelgotchi #1</Text>
-        </Pressable>
-        <Pressable
-          style={styles.subtitle}
-          onPress={() =>
-            router.push({
-              pathname: "/karelView",
-              id: 2
-            })
-          }
-        >
-          <Text style={{ fontSize: 20 }}>Karelgotchi #2</Text>
+          <Text>Return</Text>
         </Pressable>
       </View>
     </View>
