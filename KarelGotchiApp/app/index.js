@@ -2,6 +2,7 @@ import { Link, router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import LoadKarelBtn from "../components/LoadKarelBtn"
 import KarelObj from "../components/kgObjs";
+import supabase from './Supabase';
 
 const StarterKarel = KarelObj;
 
