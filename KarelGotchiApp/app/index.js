@@ -1,31 +1,35 @@
 import { Link, router } from "expo-router";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, SafeAreaView, FlatList, Text, View } from "react-native";
 import LoadKarelBtn from "../components/LoadKarelBtn";
 import KarelObj from "../components/kgObjs";
 import { useState, useEffect } from "react";
-import 'react-native-url-polyfill/auto'
+import "react-native-url-polyfill/auto";
 import supabase from "../Supabase";
 
 const StarterKarel = KarelObj;
 
+const renderBtn = ({ item }) => {
+  return <LoadKarelBtn inputObj={item} />;
+};
+
 export default function Page() {
   //Supabase stuff
   const [data, setData] = useState(null);
-  
+
   const handleRecordUpdated = (payload) => {
     console.log("UDPATE", payload);
     //setData(oldData => )
-  }
+  };
 
   const handleRecordInserted = (payload) => {
     console.log("INSERT", payload);
-    setData(oldData => [...oldData, payload.new])
-  }
+    setData((oldData) => [...oldData, payload.new]);
+  };
 
   const handleRecordDeleted = (payload) => {
     console.log("DELETE", payload);
-    setData(oldData => oldData.filter(item => item.id !== payload.old.id));
-  }
+    setData((oldData) => oldData.filter((item) => item.id !== payload.old.id));
+  };
 
   useEffect(() => {
     // Listen for changes to db
@@ -60,15 +64,20 @@ export default function Page() {
     fetchData();
   }, []);
 
-
-
   // would map data base to button flat list
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         <Text style={styles.title}>Home</Text>
         <LoadKarelBtn inputObj={StarterKarel}></LoadKarelBtn>
-        
+        <SafeAreaView style={styles.container}>
+          <FlatList
+            data={data}
+            renderItem={renderBtn}
+            keyExtractor={(item) => item.id}
+            style={{}}
+          />
+        </SafeAreaView>
       </View>
     </View>
   );
