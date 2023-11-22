@@ -1,5 +1,5 @@
 import { Text } from "react-native";
-import supabase from './Supabase';
+//import supabase from '../Supabase.js';
 
 const basicSpeech = () => {
   return <Text> Hello! </Text>;
