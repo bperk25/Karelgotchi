@@ -59,7 +59,6 @@ export default function Page() {
     const fetchData = async () => {
       const response = await supabase.from("KarelBtnTest").select("*");
       setData(response.data);
-      console.log(response.data);
     };
     fetchData();
   }, []);
@@ -69,7 +68,6 @@ export default function Page() {
     <View style={styles.container}>
       <View style={styles.main}>
         <Text style={styles.title}>Home</Text>
-        <LoadKarelBtn inputObj={StarterKarel}></LoadKarelBtn>
         <SafeAreaView style={styles.container}>
           <FlatList
             data={data}
