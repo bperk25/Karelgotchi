@@ -8,10 +8,11 @@ import {
   Pressable,
 } from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
+import KarelObj from "../components/kgObjs";
 
-
-const LoadKarelBtn = ({inputObj}) => {
+const LoadKarelBtn = ({ inputObj }) => {
   const [inputText, setInputText] = useState("");
+
   return (
     <View style={styles.container}>
       <View style={styles.btn_bg}>
@@ -20,12 +21,14 @@ const LoadKarelBtn = ({inputObj}) => {
             router.push({
               pathname: "/karelView",
               params: {
-                ...inputObj
+                ...inputObj,
               },
             })
           }
         >
-          <Text>Karelgotchi #{inputObj.num}: {inputObj.name}</Text>
+          <Text>
+            Karelgotchi #{inputObj.num}: {inputObj.name}
+          </Text>
         </Pressable>
       </View>
     </View>

@@ -10,7 +10,8 @@ const basicSpeech = () => {
 export default kgObj = {
   num: 0,
   name: "Starter Karel",
-  hunger: 0,
+  hunger: 100,
   happiness: 0,
-  sick: false
+  hygiene: 0,
+  sick: false,
 };
