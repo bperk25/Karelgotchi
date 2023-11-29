@@ -1,6 +1,14 @@
 import { Link, router } from "expo-router";
-import { Pressable, StyleSheet, SafeAreaView, FlatList, Text, View } from "react-native";
+import {
+  Pressable,
+  StyleSheet,
+  SafeAreaView,
+  FlatList,
+  Text,
+  View,
+} from "react-native";
 import LoadKarelBtn from "../components/LoadKarelBtn";
+import CreateKarelBtn from "../components/newKarel";
 import KarelObj from "../components/kgObjs";
 import { useState, useEffect } from "react";
 import "react-native-url-polyfill/auto";
@@ -10,6 +18,10 @@ const StarterKarel = KarelObj;
 
 const renderBtn = ({ item }) => {
   return <LoadKarelBtn inputObj={item} />;
+};
+
+const createKarel = () => {
+  return <CreateKarelBtn />;
 };
 
 export default function Page() {
@@ -74,8 +86,10 @@ export default function Page() {
             renderItem={renderBtn}
             keyExtractor={(item) => item.id}
             style={{}}
+            ListFooterComponent={createKarel}
           />
         </SafeAreaView>
+        <Text>hi</Text>
       </View>
     </View>
   );
@@ -96,5 +110,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 64,
     fontWeight: "bold",
+  },
+  createKarolStyle: {
+    backgroundColor: "#00FF00",
+    width: "100%",
   },
 });
