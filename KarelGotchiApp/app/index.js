@@ -1,82 +1,43 @@
 import { Link, router } from "expo-router";
-import { Pressable, StyleSheet, SafeAreaView, FlatList, Text, View } from "react-native";
+import {
+  Pressable,
+  Image,
+  StyleSheet,
+  SafeAreaView,
+  FlatList,
+  Text,
+  View,
+  Button,
+} from "react-native";
 import LoadKarelBtn from "../components/LoadKarelBtn";
 import KarelObj from "../components/kgObjs";
 import { useState, useEffect } from "react";
 import "react-native-url-polyfill/auto";
 import supabase from "../Supabase";
+import images from "../assets/images/images";
 
 const StarterKarel = KarelObj;
 
-const renderBtn = ({ item }) => {
-  return <LoadKarelBtn inputObj={item} />;
-};
+const loggedIn = true;
 
 export default function Page() {
-  //Supabase stuff
-  const [data, setData] = useState(null);
-
-  const handleRecordUpdated = (payload) => {
-    console.log("UDPATE", payload);
-    //setData(oldData => )
-  };
-
-  const handleRecordInserted = (payload) => {
-    console.log("INSERT", payload);
-    setData((oldData) => [...oldData, payload.new]);
-  };
-
-  const handleRecordDeleted = (payload) => {
-    console.log("DELETE", payload);
-    setData((oldData) => oldData.filter((item) => item.id !== payload.old.id));
-  };
-
-  useEffect(() => {
-    // Listen for changes to db
-    // From https://supabase.com/docs/guides/realtime/concepts#postgres-changes
-    supabase
-      .channel("schema-db-changes")
-      .on(
-        "postgres_changes",
-        { event: "UPDATE", schema: "public", table: "KarelBtnTest" },
-        handleRecordUpdated
-      )
-      .on(
-        "postgres_changes",
-        { event: "INSERT", schema: "public", table: "KarelBtnTest" },
-        handleRecordInserted
-      )
-      .on(
-        "postgres_changes",
-        { event: "DELETE", schema: "public", table: "KarelBtnTest" },
-        handleRecordDeleted
-      )
-      .subscribe();
-  }, []);
-
-  useEffect(() => {
-    // Fetch data on initial load
-    const fetchData = async () => {
-      const response = await supabase.from("KarelBtnTest").select("*");
-      setData(response.data);
-    };
-    fetchData();
-  }, []);
-
   // would map data base to button flat list
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Home</Text>
-        <SafeAreaView style={styles.container}>
-          <FlatList
-            data={data}
-            renderItem={renderBtn}
-            keyExtractor={(item) => item.id}
-            style={{}}
-          />
-        </SafeAreaView>
-      </View>
+      <Text style={styles.title}> KarelGotchi </Text>
+      <Image
+          style={{ width: 200, height: 250 }}
+          source={images.karel_basic}
+        />
+        <Pressable
+            onPress={() =>
+              router.push({
+                pathname: "/home",
+              })
+            }
+          >
+            <Text style={styles.btn}>Go Home</Text>
+          </Pressable>
     </View>
   );
 }
@@ -96,5 +57,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 64,
     fontWeight: "bold",
+  },
+  btn: {
+    backgroundColor: "#CF9FFF",
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 10,
+    paddingVertical: 2,
+    paddingHorizontal: 4,
   },
 });
