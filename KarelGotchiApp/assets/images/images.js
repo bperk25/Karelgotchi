@@ -4,6 +4,7 @@
 // file/section within images file
 const images = {
   karel_basic: require("./karels/karel_basic.png"),
+  login_bg: require("./tamabg.png"),
 };
 
 export default images;

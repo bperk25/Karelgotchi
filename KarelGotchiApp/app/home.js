@@ -3,7 +3,6 @@ import { Pressable, StyleSheet, SafeAreaView, FlatList, Text, View } from "react
 import LoadKarelBtn from "../components/LoadKarelBtn";
 import KarelObj from "../components/kgObjs";
 import { useState, useEffect } from "react";
-import "react-native-url-polyfill/auto";
 import supabase from "../Supabase";
 
 const StarterKarel = KarelObj;
