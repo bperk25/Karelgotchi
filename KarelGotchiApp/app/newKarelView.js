@@ -30,6 +30,7 @@ export default function Page() {
       hunger: 100,
       hygiene: 100,
       karel_name: inputText,
+      karel_color: karelColor,
     });
     router.push({
       pathname: "/",
