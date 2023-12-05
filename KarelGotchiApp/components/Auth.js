@@ -74,7 +74,7 @@ export default function Auth() {
           placeholderTextColor={{ color: "black" }}
         />
       </View>
-      <View style={{ alignItems: "center" , maxWidth: 400, width: "100%"}}>
+      <View style={{ alignItems: "center", maxWidth: 400, width: "100%" }}>
         <View style={[styles.btns, styles.mt20]}>
           <Button
             title="Sign in"
@@ -101,14 +101,14 @@ const styles = StyleSheet.create({
     marginTop: 40,
     padding: 24,
     maxWidth: 400,
-    backgroundColor: "rgba(90, 218, 184, 0.5)",
+    backgroundColor: "rgba(255, 154, 138, 0.5)",
     borderWidth: 2,
-    borderRadius: 10
+    borderRadius: 10,
   },
   title: {
     fontSize: 32,
     fontWeight: "bold",
-    marginBottom: 10
+    marginBottom: 10,
   },
   verticallySpaced: {
     paddingTop: 4,
@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   btns: {
+    // I want the button to be #C7A0D2
     paddingTop: 4,
     paddingBottom: 4,
     alignSelf: "stretch",

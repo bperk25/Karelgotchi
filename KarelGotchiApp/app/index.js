@@ -48,11 +48,16 @@ export default function Page() {
 
   if (!session) {
     return (
-      <View style={{ width: "100%", height: "100%"}}>
+      <View style={{ width: "100%", height: "100%" }}>
         <ImageBackground
           source={images.login_bg} // Replace with the path to your image
           imageStyle={{ opacity: "20%" }}
-          style={{ alignItems: "center", justifyContent: "center", height: "100%", borderWidth: 1  }}
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            borderWidth: 1,
+          }}
         >
           <Auth />
         </ImageBackground>
@@ -98,8 +103,8 @@ export default function Page() {
     setNameIsSet(true);
     setUserName("");
   }
-
-  addUser();
+  // change so that it is not requesting when it doesn't need to
+  if (!nameIsSet) addUser();
   if (!nameIsSet) {
     return (
       <View style={styles.container}>
@@ -126,7 +131,7 @@ export default function Page() {
     );
   }
 
-  // Regular Home Screen
+  // Regular Home Screen should add props to home
   // return (
   //   <View>
   //     <HomePage  />
