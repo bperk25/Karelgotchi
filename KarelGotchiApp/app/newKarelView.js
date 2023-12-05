@@ -43,7 +43,6 @@ export default function Page() {
       hunger: 100,
       hygiene: 100,
       karel_name: inputText,
-      karel_color: karelColor,
     });
     router.push({
       pathname: "/",
@@ -61,7 +60,7 @@ export default function Page() {
     return {
       opacity: opacity.value,
     };
-  });
+  }, [opacity]);
 
   const updateKarelImage = (karelColor) => {
     opacity.value = 0;
@@ -135,12 +134,12 @@ export default function Page() {
                   </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => updateKarelImage(green)}>
-                  <View stlye={styles.karelFlex}>
-                    <Image
-                      style={styles.skin_style}
-                      source={images.karel_green}
-                    />
-                  </View>
+                  {/* <View stlye={styles.karelFlex}> */}
+                  <Image
+                    style={styles.skin_style}
+                    source={images.karel_green}
+                  />
+                  {/* </View> */}
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => updateKarelImage(pink)}>
                   <View stlye={styles.karelFlex}>
@@ -154,15 +153,6 @@ export default function Page() {
             </View>
           </View>
           <View style={styles.gotchi_panel}>
-            {/* <Pressable
-            onPress={() =>
-              router.push({
-                pathname: "/",
-              })
-            }
-          >
-            <Text style={styles.backButton}>Done</Text>
-          </Pressable> */}
             <TouchableOpacity style={styles.send} onPress={addKarelInfo}>
               <Text style={styles.backButton}>Done</Text>
             </TouchableOpacity>
@@ -234,7 +224,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "40%",
     borderWidth: 1,
-    // backgroundColor: "green",
   },
   create_box: {
     borderWidth: 2,
@@ -246,7 +235,7 @@ const styles = StyleSheet.create({
   skin_style: {
     // width: "20%",
     // height: "90%",
-    // backgroundColor: "blue",
+    backgroundColor: "blue",
     height: 40,
     width: 40,
     resizeMode: "contain",
@@ -270,9 +259,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   karelFlex: {
-    width: 20,
-    height: 40,
-    backgroundColor: "blue",
+    // flex: 1,
+    width: "20%",
+    height: "40%",
+    // backgroundColor: "blue",
   },
   backButton: {
     fontSize: 10 + 0.01 * windowWidth,
