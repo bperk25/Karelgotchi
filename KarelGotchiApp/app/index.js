@@ -140,24 +140,38 @@ export default function Page() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}> KarelGotchi </Text>
-      <Image style={{ width: 200, height: 250 }} source={images.karel_basic} />
-      <Text>
-        Welcome {curData[0].username + "\n"}(
-        {session && session.user && <Text>{session.user.id}</Text>})
-      </Text>
-      <Pressable
-        onPress={() =>
-          router.push({
-            pathname: "/home",
-          })
-        }
+      <ImageBackground
+        source={images.login_bg} // Replace with the path to your image
+        imageStyle={{ opacity: "20%" }}
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          borderWidth: 1,
+        }}
       >
-        <Text style={styles.btn}>Go Home</Text>
-      </Pressable>
-      <Pressable onPress={() => signOut()}>
-        <Text>Sign Out</Text>
-      </Pressable>
+        <Text style={styles.title}> KarelGotchi </Text>
+        <Image
+          style={{ width: 200, height: 250 }}
+          source={images.karel_basic}
+        />
+        <Text>
+          Welcome {curData[0].username + "\n"}(
+          {session && session.user && <Text>{session.user.id}</Text>})
+        </Text>
+        <Pressable
+          onPress={() =>
+            router.push({
+              pathname: "/home",
+            })
+          }
+        >
+          <Text style={styles.btn}>Go Home</Text>
+        </Pressable>
+        <Pressable onPress={() => signOut()}>
+          <Text>Sign Out</Text>
+        </Pressable>
+      </ImageBackground>
     </View>
   );
 }

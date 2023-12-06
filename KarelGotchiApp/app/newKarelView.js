@@ -8,6 +8,7 @@ import {
   TextInput,
   SafeAreaView,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
 import images from "../assets/images/images";
@@ -80,85 +81,102 @@ export default function Page() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={styles.outerView}>
-        <View style={styles.container}>
-          <View style={styles.navbar}>
-            <View style={{ justifyContent: "center" }}>
-              <TouchableOpacity
-                onPress={() =>
-                  router.push({
-                    pathname: "/",
-                  })
-                }
-              >
-                <Text style={styles.btn}>Back</Text>
+      {/* <View style={{ width: "100%", height: "100%" }}>
+        
+      </View> */}
+      <ImageBackground
+        source={images.handheld_bg} // Replace with the path to your image
+        imageStyle={{ opacity: "20%" }}
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          borderWidth: 1,
+        }}
+      >
+        <View style={styles.outerView}>
+          <View style={styles.container}>
+            <View style={styles.navbar}>
+              <View style={{ justifyContent: "center" }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    router.push({
+                      pathname: "/",
+                    })
+                  }
+                >
+                  <Text style={styles.btn}>Back</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.upperHalf}>
+              <View style={styles.nameFlex}>
+                <View style={styles.intro_box}>
+                  <Text style={styles.title}>Build your Karel! </Text>
+                  <Text style={styles.subtitle}>
+                    Choose Karel's nickname and color scheme:{" "}
+                  </Text>
+                </View>
+                <View style={styles.textInput}>
+                  <TextInput
+                    value={inputText}
+                    onChangeText={(text) => setInputText(text)}
+                    placeholder={"Enter Karel Name..."}
+                  />
+                </View>
+              </View>
+              <View style={styles.main}>
+                {/* <Text style={styles.subtitle}>{params.name}</Text> */}
+                <Animated.Image
+                  style={[styles.mainImage, animatedStyle]}
+                  source={karelColor}
+                />
+              </View>
+              <View style={styles.skinFlex}>
+                <View style={styles.karel_skins}>
+                  <TouchableOpacity onPress={() => updateKarelImage(white)}>
+                    <View stlye={styles.karelFlex}>
+                      <Image
+                        style={styles.skin_style}
+                        source={images.karel_basic}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => updateKarelImage(blue)}>
+                    <View stlye={styles.karelFlex}>
+                      <Image
+                        style={styles.skin_style}
+                        source={images.karel_blue}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => updateKarelImage(green)}>
+                    {/* <View stlye={styles.karelFlex}> */}
+                    <Image
+                      style={styles.skin_style}
+                      source={images.karel_green}
+                    />
+                    {/* </View> */}
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => updateKarelImage(pink)}>
+                    <View stlye={styles.karelFlex}>
+                      <Image
+                        style={styles.skin_style}
+                        source={images.karel_pink}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+            <View style={styles.gotchi_panel}>
+              <TouchableOpacity style={styles.send} onPress={addKarelInfo}>
+                <Text style={styles.backButton}>Done</Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={styles.upperHalf}>
-            <View style={styles.nameFlex}>
-              <View style={styles.textInput}>
-                <TextInput
-                  value={inputText}
-                  onChangeText={(text) => setInputText(text)}
-                  placeholder={"Enter Karel Name..."}
-                />
-              </View>
-              {/* <View style={styles.create_box}>
-              <Text style={styles.title}>Enter Name </Text>
-            </View> */}
-            </View>
-            <View style={styles.main}>
-              {/* <Text style={styles.subtitle}>{params.name}</Text> */}
-              <Animated.Image
-                style={[styles.mainImage, animatedStyle]}
-                source={karelColor}
-              />
-            </View>
-            <View style={styles.skinFlex}>
-              <View style={styles.karel_skins}>
-                <TouchableOpacity onPress={() => updateKarelImage(white)}>
-                  <View stlye={styles.karelFlex}>
-                    <Image
-                      style={styles.skin_style}
-                      source={images.karel_basic}
-                    />
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => updateKarelImage(blue)}>
-                  <View stlye={styles.karelFlex}>
-                    <Image
-                      style={styles.skin_style}
-                      source={images.karel_blue}
-                    />
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => updateKarelImage(green)}>
-                  {/* <View stlye={styles.karelFlex}> */}
-                  <Image
-                    style={styles.skin_style}
-                    source={images.karel_green}
-                  />
-                  {/* </View> */}
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => updateKarelImage(pink)}>
-                  <View stlye={styles.karelFlex}>
-                    <Image
-                      style={styles.skin_style}
-                      source={images.karel_pink}
-                    />
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          <View style={styles.gotchi_panel}>
-            <TouchableOpacity style={styles.send} onPress={addKarelInfo}>
-              <Text style={styles.backButton}>Done</Text>
-            </TouchableOpacity>
-          </View>
         </View>
-      </View>
+      </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -202,7 +220,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   subtitle: {
-    fontSize: 36,
+    fontSize: 20,
     color: "#38434D",
   },
   btn: {
@@ -230,6 +248,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    // marginVertical: 20,
+  },
+  intro_box: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    // margin: "10%",
     // marginVertical: 20,
   },
   skin_style: {
@@ -275,9 +300,10 @@ const styles = StyleSheet.create({
   },
   textInput: {
     opacity: "50%",
-    backgroundColor: "lightblue",
+    backgroundColor: "lightpink",
     borderRadius: 5,
     padding: 8,
+    // margin: "5%",
   },
   safeArea: {
     width: "100%",
