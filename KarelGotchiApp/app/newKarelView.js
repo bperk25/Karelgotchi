@@ -32,8 +32,9 @@ const windowHeight = Dimensions.get("window").height;
 export default function Page() {
   const params = useLocalSearchParams();
 
-  const [karelColor, setKarelColor] = useState("");
-  const [inputText, setInputText] = useState("");
+  const [karelTheme, setKarelTheme] = useState("WHITE");
+  const [karelImg, setKarelImg] = useState("WHITE");
+  const [inputText, setInputText] = useState(images.karel_basic);
 
   const white = "WHITE";
   const green = "GREEN";
@@ -41,8 +42,6 @@ export default function Page() {
   const pink = "PINK";
 
   const addKarelInfo = async () => {
-    console.log(karelColor);
-    console.log({ karelColor });
     const { data, error } = await supabase.from("KarelInfo").insert([
       {
         user_id: params.uid,
@@ -50,7 +49,7 @@ export default function Page() {
         hunger: 100,
         hygiene: 100,
         karel_name: inputText,
-        karel_color: karelColor,
+        karel_theme: karelTheme,
       },
     ]);
     router.push({
@@ -71,16 +70,16 @@ export default function Page() {
     };
   }, [opacity]);
 
-  const updateKarelImage = (karelColor) => {
+  const updateKarelImage = (karelTheme) => {
     opacity.value = 0;
-    if (karelColor === white) {
-      setKarelColor(images.karel_basic);
-    } else if (karelColor === green) {
-      setKarelColor(images.karel_green);
-    } else if (karelColor === blue) {
-      setKarelColor(images.karel_blue);
-    } else if (karelColor === pink) {
-      setKarelColor(images.karel_pink);
+    if (karelTheme === white) {
+      setKarelImg(images.karel_basic);
+    } else if (karelTheme === green) {
+      setKarelImg(images.karel_green);
+    } else if (karelTheme === blue) {
+      setKarelImg(images.karel_blue);
+    } else if (karelTheme === pink) {
+      setKarelImg(images.karel_pink);
     } else {
       console.log("Error: Invalid color provided");
     }
@@ -137,7 +136,7 @@ export default function Page() {
                 {/* <Text style={styles.subtitle}>{params.name}</Text> */}
                 <Animated.Image
                   style={[styles.mainImage, animatedStyle]}
-                  source={karelColor}
+                  source={karelImg}
                 />
               </View>
               <View style={styles.skinFlex}>
