@@ -69,9 +69,12 @@ export default function Page() {
     };
   }, [opacity]);
 
+  let karelTest = undefined;
+
   const updateKarelImage = (karelColor) => {
     opacity.value = 0;
     if (karelColor === white) {
+      karelTest = white;
       setKarelColor(images.karel_basic);
     } else if (karelColor === green) {
       setKarelColor(images.karel_green);
@@ -82,7 +85,6 @@ export default function Page() {
     } else {
       console.log("Error: Invalid color provided");
     }
-    console.log(karelColor);
     opacity.value = withSpring(1, { duration: fadeDuration });
   };
 
