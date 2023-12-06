@@ -25,7 +25,7 @@ const createKarel = () => {
   return <CreateKarelBtn />;
 };
 
-export default function Page() {
+export default function Page(signOutFunc) {
   //Supabase stuff
   const [data, setData] = useState(null);
 
