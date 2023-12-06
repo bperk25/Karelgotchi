@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text, Image, View } from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
 import images from "../assets/images/images";
 import { useState, useEffect } from "react";
+import supabase from "../Supabase";
 
 export default function Page() {
   const params = useLocalSearchParams();
@@ -49,12 +50,25 @@ export default function Page() {
 
     let date = new Date();
 
-    // TODO: FIX THIS
-    const { error } = supabase
-      .from("KarelBtnTest") // TODO: change this to KarelInfo
-      .update({ last_visited_at: date.toISOString() })
-      .eq("id", karel.id);
+    const updateLastVisited = async () => {
+      const { error } = await supabase
+        .from("KarelBtnTest") // TODO: change this to KarelInfo
+        .update({ last_visited_at: date.toISOString() })
+        .eq("id", karel.id);
+    };
+    updateLastVisited();
   }, []);
+
+  const updateStatsToDatabase = async () => {
+    const { error } = await supabase
+      .from("KarelBtnTest") // TODO: change this to KarelInfo
+      .update({
+        happiness: karel.happiness,
+        hygiene: karel.happiness,
+        hunger: karel.hunger,
+      })
+      .eq("id", karel.id);
+  };
 
   let happinessBucket = "";
   let hungerBucket = "";
@@ -101,6 +115,7 @@ export default function Page() {
   } else {
     hygieneBucket = "+";
   }
+  updateStatsToDatabase();
 
   return (
     <View style={styles.container}>
