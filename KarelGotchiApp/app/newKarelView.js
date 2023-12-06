@@ -45,9 +45,9 @@ export default function Page() {
     const { data, error } = await supabase.from("KarelInfo").insert([
       {
         user_id: params.uid,
-        happiness: 100,
-        hunger: 100,
-        hygiene: 100,
+        happiness: 50,
+        hunger: 50,
+        hygiene: 50,
         karel_name: inputText,
         karel_theme: karelTheme,
       },
@@ -73,6 +73,7 @@ export default function Page() {
   let karelTest = undefined;
 
   const updateKarelImage = (karelTheme) => {
+    setKarelTheme(karelTheme);
     opacity.value = 0;
     if (karelTheme === white) {
       karelTest = white;
