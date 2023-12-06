@@ -17,6 +17,7 @@ export default function Auth() {
     });
 
     if (error) Alert.alert(error.message);
+    if (error) window.alert(error.message);
 
     setLoading(false);
   }
@@ -40,8 +41,10 @@ export default function Auth() {
     });
 
     if (error) Alert.alert(error.message);
+    if (error) window.alert(error.message);
     if (!session)
       Alert.alert("Please check your inbox for email verification!");
+    window.alert("Please check your inbox for email verification!");
     setLoading(false);
   }
 
