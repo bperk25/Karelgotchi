@@ -106,7 +106,9 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     backgroundColor: "rgba(255, 154, 138, 0.5)",
     borderWidth: 2,
+    borderColor: "pink",
     borderRadius: 10,
+    width: "80%",
   },
   title: {
     fontSize: 32,
