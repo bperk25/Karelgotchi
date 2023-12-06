@@ -32,7 +32,7 @@ const windowHeight = Dimensions.get("window").height;
 export default function Page() {
   const params = useLocalSearchParams();
 
-  const [karelColor, setKarelColor] = useState(images.karel_basic);
+  const [karelColor, setKarelColor] = useState("");
   const [inputText, setInputText] = useState("");
 
   const white = "WHITE";
@@ -41,6 +41,8 @@ export default function Page() {
   const pink = "PINK";
 
   const addKarelInfo = async () => {
+    console.log(karelColor);
+    console.log({ karelColor });
     const { data, error } = await supabase.from("KarelInfo").insert([
       {
         user_id: params.uid,
@@ -48,7 +50,7 @@ export default function Page() {
         hunger: 100,
         hygiene: 100,
         karel_name: inputText,
-        karel_color: "WHITE",
+        karel_color: karelColor,
       },
     ]);
     router.push({
