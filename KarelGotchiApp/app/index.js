@@ -133,11 +133,11 @@ export default function Page() {
   }
 
   // Regular Home Screen should add props to home
-  // return (
-  //   <View>
-  //     <HomePage  />
-  //   </View>
-  // );
+  return (
+    <View>
+      <HomePage  />
+    </View>
+  );
 
   return (
     <View style={styles.container}>

@@ -24,6 +24,7 @@ import {
   Gesture,
   GestureDetector,
 } from "react-native-gesture-handler";
+import supabase from "../Supabase";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -38,13 +39,18 @@ export default function Page() {
   const pink = "PINK";
 
   const addKarelInfo = async () => {
-    const response = await supabase.from("KarelInfo").insert({
-      user_id: "1234",
-      happiness: 100,
-      hunger: 100,
-      hygiene: 100,
-      karel_name: inputText,
-    });
+    const { data, error } = await supabase
+      .from("KarelInfo")
+      .insert([
+        {
+          user_id: "1234",
+          //happiness: 100,
+          // hunger: 100,
+          // hygiene: 100,
+          // karel_name: inputText,
+          // karel_color: "WHITE",
+        },
+      ]);
     router.push({
       pathname: "/",
     });

@@ -88,7 +88,6 @@ export default function Page() {
             ListFooterComponent={createKarel}
           />
         </SafeAreaView>
-        <Text>hi</Text>
       </View>
     </View>
   );
