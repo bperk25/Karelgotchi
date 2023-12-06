@@ -80,6 +80,7 @@ export default function Page() {
     } else {
       console.log("Error: Invalid color provided");
     }
+    console.log(karelColor);
     opacity.value = withSpring(1, { duration: fadeDuration });
   };
 
@@ -90,7 +91,7 @@ export default function Page() {
       </View> */}
       <ImageBackground
         source={images.handheld_bg} // Replace with the path to your image
-        imageStyle={{ opacity: "20%" }}
+        imageStyle={{ opacity: 0.2 }}
         style={{
           alignItems: "center",
           justifyContent: "center",
@@ -303,7 +304,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   textInput: {
-    opacity: "50%",
+    opacity: 0.5,
     backgroundColor: "lightpink",
     borderRadius: 5,
     padding: 8,

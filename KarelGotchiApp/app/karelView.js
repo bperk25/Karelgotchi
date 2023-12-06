@@ -127,7 +127,7 @@ export default function Page() {
   return (
     <ImageBackground
       source={images.karel_view_bg} // Replace with the path to your image
-      imageStyle={{ opacity: "20%" }}
+      imageStyle={{ opacity: 0.2 }}
       style={{
         height: "100%",
       }}
