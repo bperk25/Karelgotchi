@@ -137,6 +137,7 @@ export default function Page() {
   let hygieneProgress = karel.hygiene / 100;
   let happinessProgress = karel.happiness / 100;
   let hungerProgress = karel.hunger / 100;
+  let fillColor = "rgb(250, 105, 220)";
 
   return (
     <ImageBackground
@@ -163,15 +164,27 @@ export default function Page() {
           <View style={styles.stats}>
             <View style={styles.statAndBar}>
               <Text>Hunger: {hungerBucket}</Text>
-              <Progress.Bar progress={hungerProgress} width={50} />
+              <Progress.Bar
+                progress={hungerProgress}
+                width={50}
+                color={fillColor}
+              />
             </View>
             <View style={styles.statAndBar}>
               <Text>Hygiene: {hygieneBucket}</Text>
-              <Progress.Bar progress={hygieneProgress} width={50} />
+              <Progress.Bar
+                progress={hygieneProgress}
+                width={50}
+                color={fillColor}
+              />
             </View>
             <View style={styles.statAndBar}>
               <Text>Happiness: {happinessBucket}</Text>
-              <Progress.Bar progress={happinessProgress} width={50} />
+              <Progress.Bar
+                progress={happinessProgress}
+                width={50}
+                color={fillColor}
+              />
             </View>
           </View>
           <View style={styles.gotchi_panel}>
