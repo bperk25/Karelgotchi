@@ -51,7 +51,7 @@ export default function Page() {
       <View style={{ width: "100%", height: "100%" }}>
         <ImageBackground
           source={images.login_bg} // Replace with the path to your image
-          imageStyle={{ opacity: "20%" }}
+          imageStyle={{ opacity: 0.2 }}
           style={{
             alignItems: "center",
             justifyContent: "center",
@@ -167,7 +167,7 @@ export default function Page() {
     <View style={styles.container}>
       <ImageBackground
         source={images.login_bg} // Replace with the path to your image
-        imageStyle={{ opacity: "20%" }}
+        imageStyle={{ opacity: 0.2 }}
         style={{
           alignItems: "center",
           justifyContent: "center",

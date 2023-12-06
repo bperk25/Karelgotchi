@@ -85,11 +85,13 @@ export default function Page({ signOutFunc, cur_uid, cur_name }) {
   return (
     <ImageBackground
       source={images.home_bg} // Replace with the path to your image
-      imageStyle={{ opacity: 0.2 }}
+      imageStyle={{ opacity: 0.2, flex: 1 }}
       style={{
         // alignItems: "center",
         // justifyContent: "center",
         height: "100%",
+        width: "100%",
+        // flex: 1,
         // borderWidth: 1,
       }}
     >
