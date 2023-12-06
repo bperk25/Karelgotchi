@@ -135,7 +135,11 @@ export default function Page() {
   // Regular Home Screen should add props to home
   return (
     <View>
-      <HomePage signOutFunc={signOut}/>
+      <HomePage
+        signOutFunc={signOut}
+        cur_uid={session.user.id}
+        cur_name={userName}
+      />
     </View>
   );
 
