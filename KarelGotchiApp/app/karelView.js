@@ -40,8 +40,20 @@ export default function Page() {
     }));
   };
 
+  const updateStatsToDatabase = async () => {
+    const { error } = await supabase
+      .from("KarelInfo")
+      .update({
+        happiness: karel.happiness,
+        hygiene: karel.hygiene,
+        hunger: karel.hunger,
+      })
+      .eq("id", karel.id);
+  };
+
   // Stats should depreciate if this Karel hasn't been visited in >=1 hour
   useEffect(() => {
+    console.log("First load", karel.happiness, karel.hygiene);
     let happinessDelta = 5 * hoursElapsed;
     let hungerDelta = 5 * hoursElapsed;
     let hygieneDelta = 5 * hoursElapsed;
@@ -63,18 +75,8 @@ export default function Page() {
         .eq("id", karel.id);
     };
     updateLastVisited();
+    updateStatsToDatabase();
   }, []);
-
-  const updateStatsToDatabase = async () => {
-    const { error } = await supabase
-      .from("KarelInfo")
-      .update({
-        happiness: karel.happiness,
-        hygiene: karel.happiness,
-        hunger: karel.hunger,
-      })
-      .eq("id", karel.id);
-  };
 
   let happinessBucket = "";
   let hungerBucket = "";
@@ -131,6 +133,8 @@ export default function Page() {
     karel_image = images.karel_pink;
   }
 
+  console.log(karel.happiness, karel.hygiene);
+
   return (
     <ImageBackground
       source={images.karel_view_bg} // Replace with the path to your image
@@ -152,10 +156,7 @@ export default function Page() {
 
         <View style={styles.main}>
           <Text style={styles.subtitle}>{karel.name}</Text>
-          <Image
-            style={{ width: 200, height: 250 }}
-            source={karel_image}
-          />
+          <Image style={{ width: 200, height: 250 }} source={karel_image} />
           <View style={styles.stats}>
             <Text>Happiness: {happinessBucket}</Text>
             <Text>Hunger: {hungerBucket}</Text>
