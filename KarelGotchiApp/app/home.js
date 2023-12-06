@@ -89,7 +89,9 @@ export default function Page({ signOutFunc }) {
       }}
     >
       <View style={styles.container}>
-        <Pressable onPress={() => signOutFunc()}>hi</Pressable>
+        <Pressable onPress={() => signOutFunc()}>
+          <Text>Sign out</Text>
+        </Pressable>
         <View style={styles.main}>
           <Text style={styles.title}>Home</Text>
           <SafeAreaView style={styles.container}>

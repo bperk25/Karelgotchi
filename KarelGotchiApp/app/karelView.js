@@ -1,4 +1,11 @@
-import { Pressable, StyleSheet, Text, Image, View } from "react-native";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  Image,
+  View,
+  ImageBackground,
+} from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
 import images from "../assets/images/images";
 import { useState, useEffect } from "react";
@@ -118,74 +125,76 @@ export default function Page() {
   updateStatsToDatabase();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.navbar}>
-        <View style={{ justifyContent: "center" }}>
-          <Pressable
-            onPress={() =>
-              router.push({
-                pathname: "/",
-              })
-            }
-          >
-            <Text style={styles.btn}>Back</Text>
-          </Pressable>
+    <ImageBackground
+      source={images.karel_view_bg} // Replace with the path to your image
+      imageStyle={{ opacity: "20%" }}
+      style={{
+        height: "100%",
+      }}
+    >
+      <View style={styles.container}>
+        <View style={styles.navbar}>
+          <View style={{ justifyContent: "center" }}>
+            <Pressable onPress={() => router.back()}>
+              <Text style={styles.btn}>Back</Text>
+            </Pressable>
+          </View>
+          <Text style={styles.title}>Karel View</Text>
+          <Text></Text>
         </View>
-        <Text style={styles.title}>Karel View</Text>
-        <Text></Text>
-      </View>
 
-      <View style={styles.main}>
-        <Text style={styles.subtitle}>{karel.name}</Text>
-        <Image
-          style={{ width: 200, height: 250 }}
-          source={images.karel_basic}
-        />
-        <View style={styles.stats}>
-          <Text>Happiness: {happinessBucket}</Text>
-          <Text>Hunger: {hungerBucket}</Text>
-          <Text>Hygiene: {hygieneBucket}</Text>
-        </View>
-        <View style={styles.gotchi_panel}>
-          <Pressable
-            onPress={() => {
-              let hungerDelta = 5;
-              let currHunger = parseInt(karel.hunger);
-              if (currHunger >= 100) {
-                hungerDelta = 0;
-              }
-              updateKarelHunger(currHunger + hungerDelta);
-            }}
-          >
-            <Text style={styles.btn}>Feed</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              let hygieneDelta = 5;
-              let currHygiene = parseInt(karel.hygiene);
-              if (currHygiene >= 100) {
-                hygieneDelta = 0;
-              }
-              updateKarelHygiene(currHygiene + hygieneDelta);
-            }}
-          >
-            <Text style={styles.btn}>Clean</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              let happinessDelta = 5;
-              let currHappiness = parseInt(karel.happiness);
-              if (currHappiness >= 100) {
-                happinessDelta = 0;
-              }
-              updateKarelHappiness(currHappiness + happinessDelta);
-            }}
-          >
-            <Text style={styles.btn}>Play</Text>
-          </Pressable>
+        <View style={styles.main}>
+          <Text style={styles.subtitle}>{karel.name}</Text>
+          <Image
+            style={{ width: 200, height: 250 }}
+            source={images.karel_basic}
+          />
+          <View style={styles.stats}>
+            <Text>Happiness: {happinessBucket}</Text>
+            <Text>Hunger: {hungerBucket}</Text>
+            <Text>Hygiene: {hygieneBucket}</Text>
+          </View>
+          <View style={styles.gotchi_panel}>
+            <Pressable
+              onPress={() => {
+                let hungerDelta = 5;
+                let currHunger = parseInt(karel.hunger);
+                if (currHunger >= 100) {
+                  hungerDelta = 0;
+                }
+                updateKarelHunger(currHunger + hungerDelta);
+              }}
+            >
+              <Text style={styles.btn}>Feed</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => {
+                let hygieneDelta = 5;
+                let currHygiene = parseInt(karel.hygiene);
+                if (currHygiene >= 100) {
+                  hygieneDelta = 0;
+                }
+                updateKarelHygiene(currHygiene + hygieneDelta);
+              }}
+            >
+              <Text style={styles.btn}>Clean</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => {
+                let happinessDelta = 5;
+                let currHappiness = parseInt(karel.happiness);
+                if (currHappiness >= 100) {
+                  happinessDelta = 0;
+                }
+                updateKarelHappiness(currHappiness + happinessDelta);
+              }}
+            >
+              <Text style={styles.btn}>Play</Text>
+            </Pressable>
+          </View>
         </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -201,6 +210,7 @@ const styles = StyleSheet.create({
     marginHorizontal: "auto",
     alignItems: "center",
     width: "100%",
+    justifyContent: "center",
   },
   navbar: {
     flexDirection: "row",
