@@ -81,6 +81,7 @@ export default function Page({ signOutFunc, cur_uid, cur_name }) {
   }, []);
 
   // would map data base to button flat list
+  // removed this:  keyExtractor={(item) => item.user_id}
   return (
     <ImageBackground
       source={images.home_bg} // Replace with the path to your image
@@ -102,7 +103,6 @@ export default function Page({ signOutFunc, cur_uid, cur_name }) {
             <FlatList
               data={data}
               renderItem={renderBtn}
-              keyExtractor={(item) => item.user_id}
               style={{}}
               ListFooterComponent={createKarel}
             />
