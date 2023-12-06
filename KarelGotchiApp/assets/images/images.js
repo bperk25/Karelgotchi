@@ -9,6 +9,7 @@ const images = {
   karel_green: require("./karels/karel_green.png"),
   karel_pink: require("./karels/karel_pink.png"),
   handheld_bg: require("./handheld_bg.png"),
+  home_bg: require("./home_bg.png"),
 };
 
 export default images;

@@ -6,12 +6,14 @@ import {
   FlatList,
   Text,
   View,
+  ImageBackground,
 } from "react-native";
 import LoadKarelBtn from "../components/LoadKarelBtn";
 import CreateKarelBtn from "../components/newKarel";
 import KarelObj from "../components/kgObjs";
 import { useState, useEffect } from "react";
 import supabase from "../Supabase";
+import images from "../assets/images/images";
 
 const StarterKarel = KarelObj;
 
@@ -28,7 +30,7 @@ export default function Page() {
   const [data, setData] = useState(null);
 
   const handleRecordUpdated = (payload) => {
-    console.log("UDPATE", payload);
+    console.log("UPDATE", payload);
     //setData(oldData => )
   };
 
@@ -76,20 +78,31 @@ export default function Page() {
 
   // would map data base to button flat list
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Home</Text>
-        <SafeAreaView style={styles.container}>
-          <FlatList
-            data={data}
-            renderItem={renderBtn}
-            keyExtractor={(item) => item.id}
-            style={{}}
-            ListFooterComponent={createKarel}
-          />
-        </SafeAreaView>
+    <ImageBackground
+      source={images.home_bg} // Replace with the path to your image
+      imageStyle={{ opacity: "20%" }}
+      style={{
+        // alignItems: "center",
+        // justifyContent: "center",
+        height: "100%",
+        // borderWidth: 1,
+      }}
+    >
+      <View style={styles.container}>
+        <View style={styles.main}>
+          <Text style={styles.title}>Home</Text>
+          <SafeAreaView style={styles.container}>
+            <FlatList
+              data={data}
+              renderItem={renderBtn}
+              keyExtractor={(item) => item.id}
+              style={{}}
+              ListFooterComponent={createKarel}
+            />
+          </SafeAreaView>
+        </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
 
