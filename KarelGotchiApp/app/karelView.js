@@ -10,6 +10,7 @@ import { Link, router, useLocalSearchParams } from "expo-router";
 import images from "../assets/images/images";
 import { useState, useEffect } from "react";
 import supabase from "../Supabase";
+import * as Progress from "react-native-progress";
 
 export default function Page() {
   const params = useLocalSearchParams();
@@ -133,7 +134,9 @@ export default function Page() {
     karel_image = images.karel_pink;
   }
 
-  console.log(karel.happiness, karel.hygiene);
+  let hygieneProgress = karel.hygiene / 100;
+  let happinessProgress = karel.happiness / 100;
+  let hungerProgress = karel.hunger / 100;
 
   return (
     <ImageBackground
@@ -158,9 +161,18 @@ export default function Page() {
           <Text style={styles.subtitle}>{karel.name}</Text>
           <Image style={{ width: 200, height: 250 }} source={karel_image} />
           <View style={styles.stats}>
-            <Text>Happiness: {happinessBucket}</Text>
-            <Text>Hunger: {hungerBucket}</Text>
-            <Text>Hygiene: {hygieneBucket}</Text>
+            <View style={styles.statAndBar}>
+              <Text>Hunger: {hungerBucket}</Text>
+              <Progress.Bar progress={hungerProgress} width={50} />
+            </View>
+            <View style={styles.statAndBar}>
+              <Text>Hygiene: {hygieneBucket}</Text>
+              <Progress.Bar progress={hygieneProgress} width={50} />
+            </View>
+            <View style={styles.statAndBar}>
+              <Text>Happiness: {happinessBucket}</Text>
+              <Progress.Bar progress={happinessProgress} width={50} />
+            </View>
           </View>
           <View style={styles.gotchi_panel}>
             <Pressable
@@ -218,7 +230,8 @@ const styles = StyleSheet.create({
     marginHorizontal: "auto",
     alignItems: "center",
     width: "100%",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "column",
   },
   navbar: {
     flexDirection: "row",
@@ -254,5 +267,14 @@ const styles = StyleSheet.create({
   stats: {
     fontSize: 20,
     color: "black",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    width: "100%",
+  },
+  statAndBar: {
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 10,
   },
 });
