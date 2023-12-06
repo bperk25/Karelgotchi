@@ -123,11 +123,11 @@ export default function Page() {
   }
   updateStatsToDatabase();
   let karel_image = images.karel_basic;
-  if (karel.karel_color == "BLUE") {
+  if (karel.karel_theme == "BLUE") {
     karel_image = images.karel_blue;
-  } else if (karel.karel_color == "GREEN") {
+  } else if (karel.karel_theme == "GREEN") {
     karel_image = images.karel_green;
-  } else if (karel.karel_color == "PINK") {
+  } else if (karel.karel_theme == "PINK") {
     karel_image = images.karel_pink;
   }
 
@@ -154,7 +154,7 @@ export default function Page() {
           <Text style={styles.subtitle}>{karel.name}</Text>
           <Image
             style={{ width: 200, height: 250 }}
-            source={images.karel_basic}
+            source={karel_image}
           />
           <View style={styles.stats}>
             <Text>Happiness: {happinessBucket}</Text>
