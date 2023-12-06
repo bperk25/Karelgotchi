@@ -53,9 +53,9 @@ export default function Page() {
   const opacity = useSharedValue(0);
   const fadeDuration = 1000; // Set your desired fade-in duration in milliseconds
 
-  const fadeIn = () => {
-    opacity.value = withTiming(1, { duration: fadeDuration });
-  };
+  // const fadeIn = () => {
+  //   opacity.value = withTiming(1, { duration: fadeDuration });
+  // };
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
