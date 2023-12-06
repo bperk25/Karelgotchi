@@ -17,7 +17,6 @@ export default function Page() {
   // id, created_at, last_visited_at, user_id, happiness, hunger, hygiene
   let prevVisitInMS = Date.parse(karel.last_visited_at);
   let currTimeInMS = Date.now();
-  // console.log(currTimeInMS - prevVisitInMS);
   let hoursElapsed = Math.floor((currTimeInMS - prevVisitInMS) / 3600000);
 
   const updateKarelHappiness = (newHappiness) => {
@@ -59,7 +58,7 @@ export default function Page() {
 
     const updateLastVisited = async () => {
       const { error } = await supabase
-        .from("KarelInfo") // TODO: change this to KarelInfo
+        .from("KarelInfo")
         .update({ last_visited_at: date.toISOString() })
         .eq("id", karel.id);
     };
@@ -68,7 +67,7 @@ export default function Page() {
 
   const updateStatsToDatabase = async () => {
     const { error } = await supabase
-      .from("KarelInfo") // TODO: change this to KarelInfo
+      .from("KarelInfo")
       .update({
         happiness: karel.happiness,
         hygiene: karel.happiness,
@@ -123,6 +122,14 @@ export default function Page() {
     hygieneBucket = "+";
   }
   updateStatsToDatabase();
+  let karel_image = images.karel_basic;
+  if (karel.karel_color == "BLUE") {
+    karel_image = images.karel_blue;
+  } else if (karel.karel_color == "GREEN") {
+    karel_image = images.karel_green;
+  } else if (karel.karel_color == "PINK") {
+    karel_image = images.karel_pink;
+  }
 
   return (
     <ImageBackground
