@@ -146,7 +146,7 @@ export default function Page() {
               <Text style={styles.btn}>Back</Text>
             </Pressable>
           </View>
-          <Text style={styles.title}>Karel View</Text>
+          <Text style={styles.title}>{karel.karel_name}</Text>
           <Text></Text>
         </View>
 
