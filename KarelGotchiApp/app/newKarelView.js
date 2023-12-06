@@ -30,6 +30,8 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export default function Page() {
+  const params = useLocalSearchParams();
+
   const [karelColor, setKarelColor] = useState(images.karel_basic);
   const [inputText, setInputText] = useState("");
 
@@ -41,12 +43,12 @@ export default function Page() {
   const addKarelInfo = async () => {
     const { data, error } = await supabase.from("KarelInfo").insert([
       {
-        user_id: "1234",
-        //happiness: 100,
-        // hunger: 100,
-        // hygiene: 100,
-        // karel_name: inputText,
-        // karel_color: "WHITE",
+        user_id: params.uid,
+        happiness: 100,
+        hunger: 100,
+        hygiene: 100,
+        karel_name: inputText,
+        karel_color: "WHITE",
       },
     ]);
     router.push({

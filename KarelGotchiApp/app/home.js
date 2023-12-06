@@ -21,13 +21,13 @@ const renderBtn = ({ item }) => {
   return <LoadKarelBtn inputObj={item} />;
 };
 
-const createKarel = () => {
-  return <CreateKarelBtn />;
-};
-
 export default function Page({ signOutFunc, cur_uid, cur_name }) {
   //Supabase stuff
   const [data, setData] = useState(null);
+
+  const createKarel = () => {
+    return <CreateKarelBtn cur_uid={cur_uid} />;
+  };
 
   const handleRecordUpdated = (payload) => {
     console.log("UPDATE", payload);
@@ -70,8 +70,12 @@ export default function Page({ signOutFunc, cur_uid, cur_name }) {
   useEffect(() => {
     // Fetch data on initial load
     const fetchData = async () => {
-      const response = await supabase.from("KarelBtnTest").select("*");
+      const response = await supabase
+        .from("KarelInfo")
+        .select("*")
+        .eq("user_id", cur_uid);
       setData(response.data);
+      console.log(response.data);
     };
     fetchData();
   }, []);
@@ -98,7 +102,7 @@ export default function Page({ signOutFunc, cur_uid, cur_name }) {
             <FlatList
               data={data}
               renderItem={renderBtn}
-              keyExtractor={(item) => item.id}
+              keyExtractor={(item) => item.user_id}
               style={{}}
               ListFooterComponent={createKarel}
             />

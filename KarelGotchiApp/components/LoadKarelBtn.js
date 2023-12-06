@@ -27,7 +27,7 @@ const LoadKarelBtn = ({ inputObj }) => {
           }
         >
           <Text>
-            Karelgotchi #{inputObj.num}: {inputObj.name}
+            {inputObj.karel_name}
           </Text>
         </Pressable>
       </View>

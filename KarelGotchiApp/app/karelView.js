@@ -59,7 +59,7 @@ export default function Page() {
 
     const updateLastVisited = async () => {
       const { error } = await supabase
-        .from("KarelBtnTest") // TODO: change this to KarelInfo
+        .from("KarelInfo") // TODO: change this to KarelInfo
         .update({ last_visited_at: date.toISOString() })
         .eq("id", karel.id);
     };
@@ -68,7 +68,7 @@ export default function Page() {
 
   const updateStatsToDatabase = async () => {
     const { error } = await supabase
-      .from("KarelBtnTest") // TODO: change this to KarelInfo
+      .from("KarelInfo") // TODO: change this to KarelInfo
       .update({
         happiness: karel.happiness,
         hygiene: karel.happiness,

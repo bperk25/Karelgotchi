@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
 
-const CreateKarelBtn = () => {
+const CreateKarelBtn = ({cur_uid}) => {
   return (
     <View style={styles.container}>
       <View style={styles.btn_bg}>
@@ -17,6 +17,9 @@ const CreateKarelBtn = () => {
           onPress={() =>
             router.push({
               pathname: "/newKarelView",
+              params: {
+                uid: cur_uid
+              }
             })
           }
         >
