@@ -108,27 +108,47 @@ export default function Page() {
   if (!nameIsSet) addUser();
   if (!nameIsSet) {
     return (
-      <View style={styles.container}>
-        <Input
-          label="User Name"
-          leftIcon={{ type: "font-awesome", name: "user" }}
-          onChangeText={(text) => setUserName(text)}
-          value={userName}
-          placeholder="Enter User Name"
-          autoCapitalize={"none"}
-        />
-        <Pressable
-          style={{
-            backgroundColor: "gray",
-            borderWidth: 1,
-            borderRadius: 10,
-            padding: 5,
-          }}
-          onPress={() => initUserName()}
-        >
-          <Text>Submit Username</Text>
-        </Pressable>
-      </View>
+      <ImageBackground
+        source={images.username_bg}
+        imageStyle={{ opacity: 0.2 }}
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          borderWidth: 1,
+        }}
+      >
+        <View style={styles.container}>
+          <Text style={styles.welcome}>Welcome to Karelgotchi World!</Text>
+          <Input
+            // style={styles.welcome}
+            label="Please create a username:"
+            leftIcon={{ type: "font-awesome", name: "user" }}
+            onChangeText={(text) => setUserName(text)}
+            value={userName}
+            placeholder="Enter Username..."
+            autoCapitalize={"none"}
+          />
+          <Pressable
+            style={{
+              backgroundColor: "lightpink",
+              borderWidth: 1,
+              borderRadius: 10,
+              padding: 5,
+            }}
+            onPress={() => initUserName()}
+          >
+            <Text
+              style={{
+                color: "black",
+                fontSize: 15,
+              }}
+            >
+              Submit
+            </Text>
+          </Pressable>
+        </View>
+      </ImageBackground>
     );
   }
 
@@ -185,6 +205,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
     padding: 24,
   },
   main: {
@@ -204,5 +225,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 2,
     paddingHorizontal: 4,
+  },
+  welcome: {
+    color: "black",
+    fontSize: 32,
+    fontWeight: "bold",
+    padding: "2%",
+    marginBottom: "8%",
   },
 });

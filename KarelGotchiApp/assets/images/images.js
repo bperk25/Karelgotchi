@@ -11,6 +11,7 @@ const images = {
   handheld_bg: require("./handheld_bg.png"),
   home_bg: require("./home_bg.png"),
   karel_view_bg: require("./karel_view_bg.jpg"),
+  username_bg: require("./username_bg.png"),
 };
 
 export default images;
