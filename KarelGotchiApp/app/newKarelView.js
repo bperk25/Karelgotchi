@@ -293,6 +293,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
     borderWidth: 1,
     borderColor: "black",
+    opacity: 0.8,
   },
   backBackground: {
     borderWidth: 1,
@@ -301,6 +302,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 4,
     backgroundColor: "#CF9FFF",
+    opacity: 0.8,
   },
   doneButton: {
     fontSize: 0.01 * windowWidth + 15,

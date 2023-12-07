@@ -103,7 +103,9 @@ export default function Page({ signOutFunc, cur_uid, cur_name }) {
           </View>
         </TouchableOpacity>
         <View style={styles.main}>
-          <Text style={styles.title}>Home</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Home</Text>
+          </View>
           <SafeAreaView style={styles.container}>
             <FlatList
               data={data}
@@ -148,5 +150,11 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 4,
     backgroundColor: "#CF9FFF",
+    opacity: 0.8,
+  },
+  titleContainer: {
+    opacity: 0.8,
+    marginVertical: 5,
+    borderRadius: 10,
   },
 });
