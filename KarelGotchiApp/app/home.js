@@ -98,7 +98,9 @@ export default function Page({ signOutFunc, cur_uid, cur_name }) {
     >
       <View style={styles.container}>
         <TouchableOpacity onPress={() => signOutFunc()}>
-          <Text>Sign out</Text>
+          <View style={styles.signOut}>
+            <Text>Sign out</Text>
+          </View>
         </TouchableOpacity>
         <View style={styles.main}>
           <Text style={styles.title}>Home</Text>
@@ -135,5 +137,13 @@ const styles = StyleSheet.create({
   createKarolStyle: {
     backgroundColor: "#00FF00",
     width: "100%",
+  },
+  signOut: {
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 10,
+    paddingVertical: 2,
+    paddingHorizontal: 4,
+    backgroundColor: "#CF9FFF",
   },
 });
