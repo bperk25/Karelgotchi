@@ -138,7 +138,6 @@ export default function Page() {
   let hygieneProgress = karel.hygiene / 100;
   let happinessProgress = karel.happiness / 100;
   let hungerProgress = karel.hunger / 100;
-  let fillColor = "rgb(250, 105, 220)";
 
   return (
     <ImageBackground
@@ -157,7 +156,6 @@ export default function Page() {
               </View>
             </TouchableOpacity>
           </View>
-          {/* <Text style={styles.title}>{karel.karel_name}</Text> */}
         </View>
 
         <View style={styles.main}>

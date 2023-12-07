@@ -1,5 +1,4 @@
 import {
-  Pressable,
   StyleSheet,
   Text,
   Image,
@@ -9,7 +8,6 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ImageBackground,
-  Platform,
 } from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
 import images from "../assets/images/images";
@@ -20,11 +18,6 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from "react-native-reanimated";
-import {
-  GestureHandlerRootView,
-  Gesture,
-  GestureDetector,
-} from "react-native-gesture-handler";
 import supabase from "../Supabase";
 
 const windowWidth = Dimensions.get("window").width;
@@ -65,8 +58,6 @@ export default function Page() {
     return { opacity: opacity.value };
   }, [opacity]);
 
-  let karelTest = undefined;
-
   const updateKarelImage = (karelTheme) => {
     setKarelTheme(karelTheme);
     opacity.value = 0;
@@ -94,6 +85,7 @@ export default function Page() {
           justifyContent: "center",
           height: "100%",
           borderWidth: 1,
+          resizeMode: "stretch",
         }}
       >
         <View style={styles.outerView}>

@@ -133,6 +133,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 64,
     fontWeight: "bold",
+    color: "#CF9FFF",
+    textShadowColor: "black",
+    textShadowRadius: 3,
   },
   createKarolStyle: {
     backgroundColor: "#00FF00",
