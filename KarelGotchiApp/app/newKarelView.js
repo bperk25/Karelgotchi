@@ -71,7 +71,6 @@ export default function Page() {
     setKarelTheme(karelTheme);
     opacity.value = 0;
     if (karelTheme === white) {
-      karelTest = white;
       setKarelImg(images.karel_basic);
     } else if (karelTheme === green) {
       setKarelImg(images.karel_green);
@@ -102,7 +101,9 @@ export default function Page() {
             <View style={styles.navbar}>
               <View style={{ justifyContent: "center" }}>
                 <TouchableOpacity onPress={() => router.back()}>
-                  <Text style={styles.btn}>Back</Text>
+                  <View style={styles.backBackground}>
+                    <Text style={styles.btn}>Back</Text>
+                  </View>
                 </TouchableOpacity>
               </View>
             </View>
@@ -167,7 +168,9 @@ export default function Page() {
             </View>
             <View style={styles.gotchi_panel}>
               <TouchableOpacity style={styles.send} onPress={addKarelInfo}>
-                <Text style={styles.backButton}>Done</Text>
+                <View style={styles.doneBackground}>
+                  <Text style={styles.doneButton}>Done</Text>
+                </View>
               </TouchableOpacity>
             </View>
           </View>
@@ -220,11 +223,6 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: "#CF9FFF",
-    borderWidth: 1,
-    borderColor: "black",
-    borderRadius: 10,
-    paddingVertical: 2,
-    paddingHorizontal: 4,
   },
   karel_img: {
     width: 200,
@@ -235,7 +233,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     width: "100%",
-    height: "40%",
+    height: "60%",
+    backgroundColor: "black",
     borderWidth: 1,
   },
   create_box: {
@@ -274,6 +273,9 @@ const styles = StyleSheet.create({
   },
   skinFlex: {
     flex: 1,
+    resizeMode: "contain",
+    width: "100%",
+    height: "100%",
   },
   karelFlex: {
     width: "20%",
@@ -281,12 +283,6 @@ const styles = StyleSheet.create({
   },
   backButton: {
     fontSize: 10 + 0.01 * windowWidth,
-    backgroundColor: "#CF9FFF",
-    borderWidth: 1,
-    borderColor: "black",
-    borderRadius: 10,
-    paddingVertical: 4,
-    paddingHorizontal: 8,
   },
   textInput: {
     opacity: 0.5,
@@ -297,5 +293,24 @@ const styles = StyleSheet.create({
   safeArea: {
     width: "100%",
     height: "100%",
+  },
+  doneBackground: {
+    backgroundColor: "#CF9FFF",
+    borderRadius: 10,
+    paddingVertical: 2,
+    paddingHorizontal: 4,
+    borderWidth: 1,
+    borderColor: "black",
+  },
+  backBackground: {
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 10,
+    paddingVertical: 2,
+    paddingHorizontal: 4,
+    backgroundColor: "#CF9FFF",
+  },
+  doneButton: {
+    fontSize: 0.01 * windowWidth + 15,
   },
 });
