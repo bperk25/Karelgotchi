@@ -152,7 +152,9 @@ export default function Page() {
         <View style={styles.navbar}>
           <View style={{ justifyContent: "center" }}>
             <TouchableOpacity onPress={() => router.back()}>
-              <Text style={styles.btn}>Back</Text>
+              <View style={styles.btnStyle}>
+                <Text style={styles.btn}>Back</Text>
+              </View>
             </TouchableOpacity>
           </View>
           {/* <Text style={styles.title}>{karel.karel_name}</Text> */}
@@ -189,7 +191,9 @@ export default function Page() {
                 updateKarelHunger(currHunger + hungerDelta);
               }}
             >
-              <Text style={styles.btn}>Feed</Text>
+              <View style={styles.btnStyle}>
+                <Text style={styles.btn}>Feed</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
@@ -201,7 +205,9 @@ export default function Page() {
                 updateKarelHygiene(currHygiene + hygieneDelta);
               }}
             >
-              <Text style={styles.btn}>Clean</Text>
+              <View style={styles.btnStyle}>
+                <Text style={styles.btn}>Clean</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
@@ -213,7 +219,9 @@ export default function Page() {
                 updateKarelHappiness(currHappiness + happinessDelta);
               }}
             >
-              <Text style={styles.btn}>Play</Text>
+              <View style={styles.btnStyle}>
+                <Text style={styles.btn}>Play</Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -258,6 +266,9 @@ const styles = StyleSheet.create({
     color: "#38434D",
   },
   btn: {
+    fontSize: 15,
+  },
+  btnStyle: {
     backgroundColor: "#CF9FFF",
     borderWidth: 1,
     borderColor: "black",

@@ -148,12 +148,12 @@ export default function Page() {
                     </View>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => updateKarelImage(green)}>
-                    {/* <View stlye={styles.karelFlex}> */}
-                    <Image
-                      style={styles.skin_style}
-                      source={images.karel_green}
-                    />
-                    {/* </View> */}
+                    <View stlye={styles.karelFlex}>
+                      <Image
+                        style={styles.skin_style}
+                        source={images.karel_green}
+                      />
+                    </View>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => updateKarelImage(pink)}>
                     <View stlye={styles.karelFlex}>
