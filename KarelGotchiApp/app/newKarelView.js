@@ -59,11 +59,7 @@ export default function Page() {
   };
 
   const opacity = useSharedValue(0);
-  const fadeDuration = 1000; // Set your desired fade-in duration in milliseconds
-
-  const fadeIn = () => {
-    opacity.value = withTiming(1, { duration: fadeDuration });
-  };
+  const fadeDuration = 1500;
 
   const animatedStyle = useAnimatedStyle(() => {
     return { opacity: opacity.value };
@@ -86,16 +82,11 @@ export default function Page() {
     } else {
       console.log("Error: Invalid color provided");
     }
-    // if (Platform.OS !== "ios") {
     opacity.value = withSpring(1, { duration: fadeDuration });
-    // }
   };
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      {/* <View style={{ width: "100%", height: "100%" }}>
-        
-      </View> */}
       <ImageBackground
         source={images.handheld_bg} // Replace with the path to your image
         imageStyle={{ opacity: 0.2 }}
@@ -110,13 +101,7 @@ export default function Page() {
           <View style={styles.container}>
             <View style={styles.navbar}>
               <View style={{ justifyContent: "center" }}>
-                <TouchableOpacity
-                  onPress={() =>
-                    router.push({
-                      pathname: "/",
-                    })
-                  }
-                >
+                <TouchableOpacity onPress={() => router.back()}>
                   <Text style={styles.btn}>Back</Text>
                 </TouchableOpacity>
               </View>
@@ -210,7 +195,6 @@ const styles = StyleSheet.create({
     marginHorizontal: "auto",
     alignItems: "center",
     width: "100%",
-    // backgroundColor: "green",
     justifyContent: "center",
   },
   navbar: {
@@ -259,14 +243,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    // marginVertical: 20,
   },
   intro_box: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    // margin: "10%",
-    // marginVertical: 20,
   },
   skin_style: {
     // width: "20%",
@@ -285,23 +266,18 @@ const styles = StyleSheet.create({
   mainImage: {
     width: "70%",
     height: "60%",
-    // width: 100,
-    // height: 100,
     resizeMode: "contain",
   },
   nameFlex: {
     flex: 1,
-    // backgroundColor: "blue",
     justifyContent: "flex-end",
   },
   skinFlex: {
     flex: 1,
   },
   karelFlex: {
-    // flex: 1,
     width: "20%",
     height: "40%",
-    // backgroundColor: "blue",
   },
   backButton: {
     fontSize: 10 + 0.01 * windowWidth,
@@ -317,7 +293,6 @@ const styles = StyleSheet.create({
     backgroundColor: "lightpink",
     borderRadius: 5,
     padding: 8,
-    // margin: "5%",
   },
   safeArea: {
     width: "100%",

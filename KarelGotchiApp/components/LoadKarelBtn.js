@@ -6,6 +6,7 @@ import {
   Image,
   TextInput,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
 import KarelObj from "../components/kgObjs";
@@ -16,7 +17,7 @@ const LoadKarelBtn = ({ inputObj }) => {
   return (
     <View style={styles.container}>
       <View style={styles.btn_bg}>
-        <Pressable
+        <TouchableOpacity
           onPress={() =>
             router.push({
               pathname: "/karelView",
@@ -26,10 +27,8 @@ const LoadKarelBtn = ({ inputObj }) => {
             })
           }
         >
-          <Text>
-            {inputObj.karel_name}
-          </Text>
-        </Pressable>
+          <Text>{inputObj.karel_name}</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

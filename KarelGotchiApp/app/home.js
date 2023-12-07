@@ -7,6 +7,7 @@ import {
   Text,
   View,
   ImageBackground,
+  TouchableOpacity,
 } from "react-native";
 import LoadKarelBtn from "../components/LoadKarelBtn";
 import CreateKarelBtn from "../components/newKarel";
@@ -96,9 +97,9 @@ export default function Page({ signOutFunc, cur_uid, cur_name }) {
       }}
     >
       <View style={styles.container}>
-        <Pressable onPress={() => signOutFunc()}>
+        <TouchableOpacity onPress={() => signOutFunc()}>
           <Text>Sign out</Text>
-        </Pressable>
+        </TouchableOpacity>
         <View style={styles.main}>
           <Text style={styles.title}>Home</Text>
           <SafeAreaView style={styles.container}>

@@ -11,6 +11,7 @@ import images from "../assets/images/images";
 import { useState, useEffect } from "react";
 import supabase from "../Supabase";
 import * as Progress from "react-native-progress";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Page() {
   const params = useLocalSearchParams();
@@ -150,9 +151,9 @@ export default function Page() {
       <View style={styles.container}>
         <View style={styles.navbar}>
           <View style={{ justifyContent: "center" }}>
-            <Pressable onPress={() => router.back()}>
+            <TouchableOpacity onPress={() => router.back()}>
               <Text style={styles.btn}>Back</Text>
-            </Pressable>
+            </TouchableOpacity>
           </View>
           {/* <Text style={styles.title}>{karel.karel_name}</Text> */}
         </View>
@@ -178,7 +179,7 @@ export default function Page() {
             </View>
           </View>
           <View style={styles.gotchi_panel}>
-            <Pressable
+            <TouchableOpacity
               onPress={() => {
                 let hungerDelta = 5;
                 let currHunger = parseInt(karel.hunger);
@@ -189,8 +190,8 @@ export default function Page() {
               }}
             >
               <Text style={styles.btn}>Feed</Text>
-            </Pressable>
-            <Pressable
+            </TouchableOpacity>
+            <TouchableOpacity
               onPress={() => {
                 let hygieneDelta = 5;
                 let currHygiene = parseInt(karel.hygiene);
@@ -201,8 +202,8 @@ export default function Page() {
               }}
             >
               <Text style={styles.btn}>Clean</Text>
-            </Pressable>
-            <Pressable
+            </TouchableOpacity>
+            <TouchableOpacity
               onPress={() => {
                 let happinessDelta = 5;
                 let currHappiness = parseInt(karel.happiness);
@@ -213,7 +214,7 @@ export default function Page() {
               }}
             >
               <Text style={styles.btn}>Play</Text>
-            </Pressable>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

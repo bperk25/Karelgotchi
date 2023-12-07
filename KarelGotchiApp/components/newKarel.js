@@ -6,25 +6,26 @@ import {
   Image,
   TextInput,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
 
-const CreateKarelBtn = ({cur_uid}) => {
+const CreateKarelBtn = ({ cur_uid }) => {
   return (
     <View style={styles.container}>
       <View style={styles.btn_bg}>
-        <Pressable
+        <TouchableOpacity
           onPress={() =>
             router.push({
               pathname: "/newKarelView",
               params: {
-                uid: cur_uid
-              }
+                uid: cur_uid,
+              },
             })
           }
         >
           <Text>+ Create new Karel +</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </View>
   );
