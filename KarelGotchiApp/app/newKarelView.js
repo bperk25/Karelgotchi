@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ImageBackground,
+  Platform,
 } from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
 import images from "../assets/images/images";
@@ -60,14 +61,12 @@ export default function Page() {
   const opacity = useSharedValue(0);
   const fadeDuration = 1000; // Set your desired fade-in duration in milliseconds
 
-  // const fadeIn = () => {
-  //   opacity.value = withTiming(1, { duration: fadeDuration });
-  // };
+  const fadeIn = () => {
+    opacity.value = withTiming(1, { duration: fadeDuration });
+  };
 
   const animatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-    };
+    return { opacity: opacity.value };
   }, [opacity]);
 
   let karelTest = undefined;
@@ -87,7 +86,9 @@ export default function Page() {
     } else {
       console.log("Error: Invalid color provided");
     }
+    // if (Platform.OS !== "ios") {
     opacity.value = withSpring(1, { duration: fadeDuration });
+    // }
   };
 
   return (
@@ -137,7 +138,6 @@ export default function Page() {
                 </View>
               </View>
               <View style={styles.main}>
-                {/* <Text style={styles.subtitle}>{params.name}</Text> */}
                 <Animated.Image
                   style={[styles.mainImage, animatedStyle]}
                   source={karelImg}
@@ -278,12 +278,15 @@ const styles = StyleSheet.create({
   },
   upperHalf: {
     height: "50%",
+    width: "100%",
     flexDirection: "column",
     justifyContent: "space-evenly",
   },
   mainImage: {
-    width: "60%",
-    height: "50%",
+    width: "70%",
+    height: "60%",
+    // width: 100,
+    // height: 100,
     resizeMode: "contain",
   },
   nameFlex: {
