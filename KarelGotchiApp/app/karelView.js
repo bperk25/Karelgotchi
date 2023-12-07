@@ -153,24 +153,26 @@ export default function Page() {
               <Text style={styles.btn}>Back</Text>
             </Pressable>
           </View>
-          <Text style={styles.title}>{karel.karel_name}</Text>
-          <Text></Text>
+          {/* <Text style={styles.title}>{karel.karel_name}</Text> */}
         </View>
 
         <View style={styles.main}>
-          <Text style={styles.subtitle}>{karel.name}</Text>
+          <Text style={styles.subtitle}>Time to take care of:</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>~ {karel.karel_name} ~</Text>
+          </View>
           <Image style={{ width: 200, height: 250 }} source={karel_image} />
           <View style={styles.stats}>
             <View style={styles.statAndBar}>
-              <Text>Hunger: {hungerBucket}</Text>
+              <Text style={styles.label}>Hunger: {hungerBucket}</Text>
               <Progress.Bar progress={hungerProgress} width={50} />
             </View>
             <View style={styles.statAndBar}>
-              <Text>Hygiene: {hygieneBucket}</Text>
+              <Text style={styles.label}>Hygiene: {hygieneBucket}</Text>
               <Progress.Bar progress={hygieneProgress} width={50} />
             </View>
             <View style={styles.statAndBar}>
-              <Text>Happiness: {happinessBucket}</Text>
+              <Text style={styles.label}>Happiness: {happinessBucket}</Text>
               <Progress.Bar progress={happinessProgress} width={50} />
             </View>
           </View>
@@ -227,6 +229,7 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
+    flexDirection: "column",
     marginHorizontal: "auto",
     alignItems: "center",
     width: "100%",
@@ -245,7 +248,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   title: {
-    fontSize: 32,
+    fontSize: 50,
     fontWeight: "bold",
   },
   subtitle: {
@@ -271,10 +274,21 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     width: "100%",
   },
+  label: {
+    fontSize: 15,
+    color: "black",
+    fontWeight: "bold",
+  },
   statAndBar: {
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
     padding: 10,
+  },
+  titleContainer: {
+    opacity: 0.8,
+    backgroundColor: "white",
+    borderRadius: 5,
+    padding: 12,
   },
 });
