@@ -76,7 +76,6 @@ export default function Page({ signOutFunc, cur_uid, cur_name }) {
         .select("*")
         .eq("user_id", cur_uid);
       setData(response.data);
-      console.log(response.data);
     };
     fetchData();
   }, []);

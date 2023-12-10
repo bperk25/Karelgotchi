@@ -51,6 +51,7 @@ export default function Page() {
     });
   };
 
+  // Main Karel image animation with help of ChatGPT.
   const opacity = useSharedValue(0);
   const fadeDuration = 1500;
 
