@@ -216,18 +216,14 @@ const styles = StyleSheet.create({
   btn: {
     backgroundColor: "#CF9FFF",
   },
-  karel_img: {
-    width: 200,
-    height: 250,
-  },
   karel_skins: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
     width: "100%",
     height: "60%",
-    backgroundColor: "black",
     borderWidth: 1,
+    resizeMode: "contain",
   },
   create_box: {
     borderWidth: 2,
@@ -241,11 +237,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   skin_style: {
-    // width: "20%",
-    // height: "90%",
-    backgroundColor: "blue",
-    height: 40,
-    width: 40,
+    height: 30 + 0.02 * windowHeight,
+    width: 30 + 0.02 * windowWidth,
     resizeMode: "contain",
   },
   upperHalf: {
@@ -272,6 +265,7 @@ const styles = StyleSheet.create({
   karelFlex: {
     width: "20%",
     height: "40%",
+    resizeMode: "contain",
   },
   backButton: {
     fontSize: 10 + 0.01 * windowWidth,
