@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     width: "100%",
-    height: "60%",
+    height: 40 + 0.02 * windowHeight,
     borderWidth: 1,
     resizeMode: "contain",
   },
