@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ImageBackground,
+  Pressable,
 } from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
 import images from "../assets/images/images";
@@ -91,15 +92,6 @@ export default function Page() {
       >
         <View style={styles.outerView}>
           <View style={styles.container}>
-            <View style={styles.navbar}>
-              <View style={{ justifyContent: "center" }}>
-                <TouchableOpacity onPress={() => router.back()}>
-                  <View style={styles.backBackground}>
-                    <Text style={styles.btn}>Back</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
             <View style={styles.upperHalf}>
               <View style={styles.nameFlex}>
                 <View style={styles.intro_box}>
@@ -163,6 +155,11 @@ export default function Page() {
               <TouchableOpacity style={styles.send} onPress={addKarelInfo}>
                 <View style={styles.doneBackground}>
                   <Text style={styles.doneButton}>Done</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.send, {marginLeft: 5}]} onPress={() => router.back()}>
+                <View style={styles.doneBackground}>
+                  <Text style={styles.doneButton}>Cancel</Text>
                 </View>
               </TouchableOpacity>
             </View>
